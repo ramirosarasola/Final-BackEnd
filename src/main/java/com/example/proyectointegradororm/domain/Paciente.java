@@ -1,7 +1,10 @@
 package com.example.proyectointegradororm.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "pacientes")
@@ -17,10 +20,15 @@ public class Paciente {
     private int dni;
     @Column
     private LocalDate fechaIngreso;
-    @Column
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_domicilio", referencedColumnName = "id")
     private Domicilio domicilio;
     @Column
     private String email;
+
+    @OneToMany(mappedBy = "paciente")
+    @JsonIgnore
+    private Set<Turno> turnos;
 
     public Long getId() {
         return id;

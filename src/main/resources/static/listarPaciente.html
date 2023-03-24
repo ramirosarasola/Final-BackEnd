@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>Estudiantes</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Pacientes</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -12,14 +11,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/get_odontologo.js"></script>
-    <script type="text/javascript" src="/js/delete_odontologo.js"></script>
-    <script type="text/javascript" src="/js/update_odontologo.js"></script>
+    <script type="text/javascript" src="/js/get_paciente.js"></script>
+    <script type="text/javascript" src="/js/delete_paciente.js"></script>
+    <script type="text/javascript" src="/js/update_paciente.js"></script>
+    
   </head>
   <body>
-
-    <!--! MENU NAVEGACION -->
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="/index.html">Home</a>
       <button
@@ -100,40 +97,38 @@
           </button>
         </form>
       </div>
-
-      <!--! CONTAINER PRINCIPAL -->
-
     </nav>
+
     <div class="container">
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <a class="nav-link" href="/altaOdontologo.html"
-            >Registrar Odontologo</a
-          >
+          <a class="nav-link" href="/altaOdontologo.html">Registrar Paciente</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/listarOdontologo.html">Listar</a>
         </li>
       </ul>
 
-      <div id="div_odontologo_table">
-        <h1>Odontologos</h1>
+      <div id="div_paciente_table">
+        <h1>Pacientes</h1>
         <div class="row col-md-6 table-responsive">
-          <table id="odontologoTable" class="table table-striped">
+          <table id="pacienteTable" class="table table-striped">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Apellido</th>
                 <th>Nombre</th>
-                <th>Matricula</th>
+                <th>DNI</th>
+                <th>Fecha de Ingreso</th>
+                <th>Domicilio</th>
+                <th>Email</th>
                 <th></th>
               </tr>
             </thead>
-            <tbody id="odontologoTableBody"></tbody>
+            <tbody id="pacienteTableBody"></tbody>
           </table>
         </div>
       </div>
-      
       <div class="row">
         <div
           class="col-sm-6"
@@ -143,15 +138,15 @@
             padding: 10px;
             border-radius: 3px;
           "
-          id="div_odontologo_updating"
+          id="div_paciente_updating"
         >
-          <form id="update_odontologo_form">
+          <form id="update_paciente_form">
             <div class="form-group">
               <label>ID:</label>
               <input
                 type="text"
                 class="form-control"
-                id="odontologo_id"
+                id="paciente_id"
                 readonly
               />
             </div>
@@ -174,14 +169,44 @@
               />
             </div>
             <div class="form-group">
-              <label>Matricula:</label>
+              <label>DNI:</label>
               <input
-                type="text"
+                type="number"
                 class="form-control"
-                placeholder="matricula"
-                id="matricula"
+                placeholder="dni"
+                id="dni"
               />
             </div>
+
+            <div class="form-group">
+                <label>fecha de Ingreso:</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  placeholder="fechaIngreso"
+                  id="fechaIngreso"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Domicilio:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="domicilio"
+                  id="domicilio"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Email:</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="email"
+                  id="email"
+                />
+              </div>
 
             <button type="submit" class="btn btn-primary">Modificar</button>
           </form>

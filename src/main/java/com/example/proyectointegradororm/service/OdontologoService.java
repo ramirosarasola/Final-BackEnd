@@ -25,8 +25,8 @@ public class OdontologoService {
         return Optional.of(odontologoRepository.findAll());
     }
 
-    public Optional<String> eliminarOdontologo(Odontologo odontologo){
-        odontologoRepository.delete(odontologo);
+    public Optional<String> eliminarOdontologo(Long id){
+        odontologoRepository.deleteById(id);
         return Optional.of("El Odontologo ha sido eliminado correctamente");
     }
 

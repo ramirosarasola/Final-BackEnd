@@ -1,6 +1,9 @@
 package com.example.proyectointegradororm.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "odontologos")
@@ -14,6 +17,9 @@ public class Odontologo {
     private String nombre;
     @Column
     private String matricula;
+    @OneToMany(mappedBy = "odontologo")
+    @JsonIgnore
+    private Set<Turno> turnos;
 
     public Long getId() {
         return id;

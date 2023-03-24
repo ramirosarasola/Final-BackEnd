@@ -1,4 +1,4 @@
-window.addEventListener('load', function () {
+// window.addEventListener('load', function () {
     // Inicia el Loading Page
 
     //Buscamos y obtenemos el formulario donde estan
@@ -20,7 +20,7 @@ window.addEventListener('load', function () {
 
         };
 
-        //invocamos utilizando la función fetch la API peliculas con el método PUT que modificará
+        //invocamos utilizando la función fetch la API pacientes con el método PUT que modificará
         //la película que enviaremos en formato JSON
         const url = '/odontologos';
         const settings = {
@@ -35,7 +35,7 @@ window.addEventListener('load', function () {
 
     })
 
-    })
+    // })
     // Fin del Loading Page
 
     //Es la funcion que se invoca cuando se hace click sobre el id de una pelicula del listado

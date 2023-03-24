@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Pacientes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/post_pacientes.js"></script>
+</head>
+<body>
+
+  <!--! Navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/index.html">Home</a>
+  <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+        >
+          Odontologos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/altaOdontologo.html">Registrar</a>
+          <a class="dropdown-item" href="/listarOdontologo.html">Buscar</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+        >
+          Pacientes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/altaPaciente.html">Registrar</a>
+          <a class="dropdown-item" href="/listarPaciente.html">Buscar</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+        >
+          Turnos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/altaTurno.html">Registrar</a>
+          <a class="dropdown-item" href="/buscarTurno.html">Buscar</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+      />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+  </div>
+</nav>
+
+  <!--! Container Principal -->
+
+<div class="container">
+  <div class="row display-flex flex-column">
+
+    <h1>Pacientes</h1>
+
+    <!-- !Inicio Formulario de Domicilio -->
+
+    <form class="" id="add_new_domicilio">
+      <div class="form-row display-flex flex-column">
+      <div class="form-group">
+        <label for="calle">Calle</label>
+        <input type="text" class="form-control" id="calle" placeholder="1234 Main St">
+      </div>
+      <div class="form-group">
+        <label for="numeroCalle">Numero</label>
+        <input type="number" class="form-control" id="numeroCalle" placeholder="Apartment, studio, or floor">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="localidad">Localidad</label>
+          <input type="text" class="form-control" id="localidad">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="provincia">Provincia</label>
+          <select id="provincia" class="form-control">
+            <option selected>Choose...</option>
+            <option >Buenos Aires</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">CP</label>
+          <input type="text" class="form-control" id="inputZip">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <label class="form-check-label" for="gridCheck">
+            Check me out
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 200px;">Guardar Domicilio</button>
+    </form>
+
+    <!-- !Final Formulario de Domicilio -->
+    <div class="" style="background-color:#e6fffa; padding:10px; border-radius:3px; margin-top: 2rem">
+      <h3>Registrar Pacientes</h3>
+      <form id="add_new_odontologo">
+        <div class="form-group">
+          <label class="control-label" for="apellido">Apellido:</label>
+          <input type="text" class="form-control" id="apellido"
+                 placeholder="Ingrese su apellido"
+                 name="apellido" required></input>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="nombre">Nombre:</label>
+          <input type="text" class="form-control" id="nombre"
+                 placeholder="Ingrese su nombre"
+                 name="nombre" required></input>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="nombre">DNI:</label>
+          <input type="number" class="form-control" id="dni"
+                 placeholder="Ingrese su dni"
+                 name="dni" required></input>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="fechaIngreso">Fecha de Ingreso:</label>
+          <input type="date" class="form-control" id="fechaIngreso"
+                 name="fechaIngreso" required></input>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="nombre">Domicilio:</label>
+          <input type="text" class="form-control" id="domicilio"
+                 placeholder="Ingrese la domicilio"
+                 name="domicilio" required></input>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="nombre">Email:</label>
+          <input type="email" class="form-control" id="email"
+                 placeholder="Ingrese su correo electronico"
+                 name="email" required></input>
+        </div>
+
+
+        <button type="submit" class="btn btn-danger"
+                id="btn-add-new-odontologo">Registrar</button>
+      </form>
+
+      <div id="response" style="display:none; margin-top:10px"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

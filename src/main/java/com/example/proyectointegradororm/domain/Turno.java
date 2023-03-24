@@ -9,9 +9,11 @@ public class Turno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "paciente_id")
     private Paciente paciente;
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "odontologo_id")
     private Odontologo odontologo;
     @Column
     private LocalDate fechaTurno;
