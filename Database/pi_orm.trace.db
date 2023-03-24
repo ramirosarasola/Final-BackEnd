@@ -68,3 +68,81 @@ DELETE * FROM ODONTOLOGOS WHERE ID = 1 [42001-214]
 2023-03-24 12:01:26 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FROM ODONTOLOGOS WHERE ID = 1"; expected "identifier"; SQL statement:
 DELETE * FROM ODONTOLOGOS WHERE ID = 1 [42001-214]
+2023-03-24 13:16:06 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "DATE" constant "18-02-2023"; SQL statement:
+INSERT INTO PACIENTES (APELLIDO, DNI, EMAIL, FECHA_INGRESO, NOMBRE, ID_DOMICILIO ) VALUES ('Sarasola', 41758545, 'ramiro@sarasola.com', '18-02-2023', 'Ramiro', 1) [22007-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:506)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.value.ValueDate.parse(ValueDate.java:53)
+	at org.h2.value.Value.convertToDate(Value.java:1854)
+	at org.h2.value.Value.convertTo(Value.java:1147)
+	at org.h2.value.Value.convertForAssignTo(Value.java:1092)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:369)
+	at org.h2.table.Table.convertInsertRow(Table.java:926)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:167)
+	at org.h2.command.dml.Insert.update(Insert.java:135)
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp.query(WebApp.java:1113)
+	at org.h2.server.web.WebApp.process(WebApp.java:244)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebServlet.doGet(WebServlet.java:129)
+	at org.h2.server.web.WebServlet.doPost(WebServlet.java:166)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:696)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+Caused by: java.lang.IllegalArgumentException: 18-2-2023
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:194)
+	at org.h2.value.ValueDate.parse(ValueDate.java:51)
+	... 54 more
+2023-03-24 13:16:22 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "-2007 (PACIENTES: ""FECHA_INGRESO"" DATE)"; SQL statement:
+INSERT INTO PACIENTES (APELLIDO, DNI, EMAIL, FECHA_INGRESO, NOMBRE, ID_DOMICILIO ) VALUES ('Sarasola', 41758545, 'ramiro@sarasola.com', 18-02-2023, 'Ramiro', 1) [22018-214]
+2023-03-24 13:17:04 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "2003 (PACIENTES: ""FECHA_INGRESO"" DATE)"; SQL statement:
+INSERT INTO PACIENTES (APELLIDO, DNI, EMAIL, FECHA_INGRESO, NOMBRE, ID_DOMICILIO ) VALUES ('Sarasola', 41758545, 'ramiro@sarasola.com', 2023-10-10, 'Ramiro', 1) [22018-214]
+2023-03-24 13:17:05 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "2003 (PACIENTES: ""FECHA_INGRESO"" DATE)"; SQL statement:
+INSERT INTO PACIENTES (APELLIDO, DNI, EMAIL, FECHA_INGRESO, NOMBRE, ID_DOMICILIO ) VALUES ('Sarasola', 41758545, 'ramiro@sarasola.com', 2023-10-10, 'Ramiro', 1) [22018-214]
+2023-03-24 13:18:28 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO DOMICILIOS (CALLE, LOCALIDAD, NUMERO, PROVINCIA) VALUES ('Italia', 'Benavidez', 5043, 'Buenos Aires')\000d\000a[*]INSERT INTO PACIENTES (APELLIDO, DNI, EMAIL, FECHA_INGRESO, NOMBRE, ID_DOMICILIO ) VALUES ('Sarasola', 41758545, 'ramiro@sarasola.com', '2023-10-10', 'Ramiro', 1)"; SQL statement:
+INSERT INTO DOMICILIOS (CALLE, LOCALIDAD, NUMERO, PROVINCIA) VALUES ('Italia', 'Benavidez', 5043, 'Buenos Aires')
+INSERT INTO PACIENTES (APELLIDO, DNI, EMAIL, FECHA_INGRESO, NOMBRE, ID_DOMICILIO ) VALUES ('Sarasola', 41758545, 'ramiro@sarasola.com', '2023-10-10', 'Ramiro', 1) [42000-214]

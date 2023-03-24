@@ -42,7 +42,7 @@ public class OdontologoController {
     public ResponseEntity<String> eliminarOdontologo(@PathVariable Long id){
         if(odontologoService.buscarOdontologo(id) != null){
             odontologoService.eliminarOdontologo(id);
-            return ResponseEntity.ok("El turno ha sido eliminado correctamente");
+            return ResponseEntity.ok("El Odontologo ha sido eliminado correctamente");
         }else{
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

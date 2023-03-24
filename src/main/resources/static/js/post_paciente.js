@@ -1,18 +1,13 @@
-document.addEventListener('DOMContentLoad', function () {
+window.addEventListener('load', function () {
 
     //Al cargar la pagina buscamos y obtenemos el formulario donde estarán
     //los datos que el usuario cargará de la nueva paciente
     const formulario = document.querySelector('#add_new_paciente');
     const domicilioForm = this.document.querySelector('#add_new_domicilio');
 
-    const domicilioPaciente = {
-        calle: document.querySelector('#calle').value  ,
-        numeroCalle: document.querySelector('#numeroCalle').value ,
-        localidad: document.querySelector('#localidad').value ,
-        provincia: document.querySelector('#provincia').value ,
-        }
+
     
-    document.querySelector('#domicilio').value +=`${domicilioPaciente.calle} - ${domicilioPaciente.numeroCalle}, ${domicilioPaciente.localidad}, ${domicilioPaciente.provincia}`
+    //document.querySelector('#domicilio').value +=`${domicilioPaciente.calle} - ${domicilioPaciente.numeroCalle}, ${domicilioPaciente.localidad}, ${domicilioPaciente.provincia}`
 
     //Ante un submit del formulario se ejecutará la siguiente funcion
     formulario.addEventListener('submit', function (event) {
@@ -23,7 +18,12 @@ document.addEventListener('DOMContentLoad', function () {
             nombre: document.querySelector('#nombre').value,
             dni: document.querySelector('#dni').value,
             fechaIngreso: document.querySelector('#fechaIngreso').value,
-            domicilio: domicilioPaciente,
+            domicilio: {
+               calle: document.querySelector('#calle').value  ,
+               numeroCalle: parseInt(document.querySelector('#numeroCalle').value),
+               localidad: document.querySelector('#localidad').value ,
+               provincia: document.querySelector('#provincia').value ,
+               },
             email: document.querySelector('#email').value,
 
         };
@@ -76,7 +76,6 @@ document.addEventListener('DOMContentLoad', function () {
         document.querySelector('#nombre').value = "";
         document.querySelector('#dni').value = "";
         document.querySelector('#fechaIngreso').value = "";
-        document.querySelector('#domicilio').value = "";
         document.querySelector('#email').value = "";
 
     }

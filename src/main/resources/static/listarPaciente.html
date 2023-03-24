@@ -99,19 +99,21 @@
       </div>
     </nav>
 
+<!-- !Inicio Container Principal   -->
+
     <div class="container">
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <a class="nav-link" href="/altaOdontologo.html">Registrar Paciente</a>
+          <a class="nav-link" href="/altaPaciente.html">Registrar Paciente</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/listarOdontologo.html">Listar</a>
+          <a class="nav-link" href="/listarPaciente.html">Listar</a>
         </li>
       </ul>
 
       <div id="div_paciente_table">
         <h1>Pacientes</h1>
-        <div class="row col-md-6 table-responsive">
+        <div class="row table-responsive">
           <table id="pacienteTable" class="table table-striped">
             <thead>
               <tr>
@@ -140,7 +142,46 @@
           "
           id="div_paciente_updating"
         >
+
           <form id="update_paciente_form">
+
+<!--            domicilio-->
+            <div class="form-row display-flex flex-column">
+              <div class="form-group">
+                <label for="calle">Calle</label>
+                <input type="text" class="form-control" id="calle" placeholder="1234 Main St">
+              </div>
+              <div class="form-group">
+                <label for="numeroCalle">Numero</label>
+                <input type="number" class="form-control" id="numeroCalle" placeholder="Apartment, studio, or floor">
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="localidad">Localidad</label>
+                  <input type="text" class="form-control" id="localidad">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="provincia">Provincia</label>
+                  <select id="provincia" class="form-control">
+                    <option selected>Choose...</option>
+                    <option >Buenos Aires</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputZip">CP</label>
+                  <input type="text" class="form-control" id="inputZip">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck">
+                  <label class="form-check-label" for="gridCheck">
+                    Check me out
+                  </label>
+                </div>
+              </div>
+            </div>
+<!--            fin domicilio-->
             <div class="form-group">
               <label>ID:</label>
               <input

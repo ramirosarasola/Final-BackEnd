@@ -16,7 +16,7 @@ window.addEventListener('load', function () {
             //por cada paciente armaremos una fila de la tabla
             //cada fila tendrá un id que luego nos permitirá borrar la fila si eliminamos la paciente
             var table = document.getElementById("pacienteTable");
-            var pacienteRow =table.insertRow();
+            var pacienteRow = table.insertRow();
             let tr_id = 'tr_' + paciente.id;
             pacienteRow.id = tr_id;
 
@@ -45,9 +45,9 @@ window.addEventListener('load', function () {
             pacienteRow.innerHTML = '<td>' + updateButton + '</td>' +
                     '<td class=\"td_apellido\">' + paciente.apellido.toUpperCase() + '</td>' +
                     '<td class=\"td_nombre\">' + paciente.nombre.toUpperCase() + '</td>' +
-                    '<td class=\"td_dni\">' + paciente.dni.toUpperCase() + '</td>' +
-                    '<td class=\"td_fechaIngreso\">' + paciente.fechaIngreso.toUpperCase() + '</td>' +
-                    '<td class=\"td_domicilio\">' + paciente.domicilio.toUpperCase() + '</td>' +
+                    '<td class=\"td_dni\">' + paciente.dni + '</td>' +
+                    '<td class=\"td_fechaIngreso\">' + paciente.fechaIngreso + '</td>' +
+                    '<td class=\"td_domicilio\">' + paciente.domicilio.calle +" "+ paciente.domicilio.numero +", "+ paciente.domicilio.localidad +", "+ paciente.domicilio.provincia + '</td>' +
                     '<td class=\"td_email\">' + paciente.email.toUpperCase() + '</td>' +
                     '<td>' + deleteButton + '</td>';
 

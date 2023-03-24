@@ -39,4 +39,9 @@ public class DomicilioService {
         return Optional.of(domicilioRepository.save(domicilio));
     }
 
+    public Optional<String> eliminarDomicilio(Long id){
+        domicilioRepository.deleteById(id);
+        return Optional.of("El Domicilio ha sido eliminado correctamente");
+    }
+
 }

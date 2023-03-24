@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/js/post_pacientes.js"></script>
+  <script type="text/javascript" src="/js/post_paciente.js"></script>
 </head>
 <body>
 
@@ -34,7 +34,7 @@
         <a
                 class="nav-link dropdown-toggle"
                 href="#"
-                id="navbarDropdown"
+                id="dropdownOdontologo"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
@@ -51,7 +51,7 @@
         <a
                 class="nav-link dropdown-toggle"
                 href="#"
-                id="navbarDropdown"
+                id="dropdownPaciente"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
@@ -68,7 +68,7 @@
         <a
                 class="nav-link dropdown-toggle"
                 href="#"
-                id="navbarDropdown"
+                id="dropdownTurno"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
@@ -89,9 +89,9 @@
               placeholder="Search"
               aria-label="Search"
       />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Search
-      </button>
+<!--      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">-->
+<!--        Search-->
+<!--      </button>-->
     </form>
   </div>
 </nav>
@@ -140,13 +140,14 @@
           </label>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary" style="width: 200px;">Guardar Domicilio</button>
+<!--      <button type="submit" class="btn btn-primary" style="width: 200px;">Guardar Domicilio</button>-->
+      </div>
     </form>
 
     <!-- !Final Formulario de Domicilio -->
     <div class="" style="background-color:#e6fffa; padding:10px; border-radius:3px; margin-top: 2rem">
       <h3>Registrar Pacientes</h3>
-      <form id="add_new_odontologo">
+      <form id="add_new_paciente">
         <div class="form-group">
           <label class="control-label" for="apellido">Apellido:</label>
           <input type="text" class="form-control" id="apellido"
@@ -173,12 +174,12 @@
                  name="fechaIngreso" required></input>
         </div>
 
-        <div class="form-group">
-          <label class="control-label" for="nombre">Domicilio:</label>
-          <input type="text" class="form-control" id="domicilio"
-                 placeholder="Ingrese la domicilio"
-                 name="domicilio" required></input>
-        </div>
+<!--        <div class="form-group">-->
+<!--          <label class="control-label" for="nombre">Domicilio:</label>-->
+<!--          <input type="text" class="form-control" id="domicilio"-->
+<!--                 placeholder="Ingrese la domicilio"-->
+<!--                 name="domicilio" required></input>-->
+<!--        </div>-->
 
         <div class="form-group">
           <label class="control-label" for="nombre">Email:</label>
@@ -189,7 +190,7 @@
 
 
         <button type="submit" class="btn btn-danger"
-                id="btn-add-new-odontologo">Registrar</button>
+                id="btn-add-new-paciente">Registrar</button>
       </form>
 
       <div id="response" style="display:none; margin-top:10px"></div>
