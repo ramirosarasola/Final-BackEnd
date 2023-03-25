@@ -64,7 +64,9 @@
               document.querySelector('#fechaIngreso').value = paciente.fechaIngreso;
               document.querySelector('#domicilio').value = paciente.domicilio;
               document.querySelector('#email').value = paciente.email;
+
               //el formulario por default esta oculto y al editar se habilita
+
               document.querySelector('#div_paciente_updating').style.display = "block";
           }).catch(error => {
               alert("Error: " + error);

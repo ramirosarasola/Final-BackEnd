@@ -146,3 +146,32 @@ INSERT INTO PACIENTES (APELLIDO, DNI, EMAIL, FECHA_INGRESO, NOMBRE, ID_DOMICILIO
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO DOMICILIOS (CALLE, LOCALIDAD, NUMERO, PROVINCIA) VALUES ('Italia', 'Benavidez', 5043, 'Buenos Aires')\000d\000a[*]INSERT INTO PACIENTES (APELLIDO, DNI, EMAIL, FECHA_INGRESO, NOMBRE, ID_DOMICILIO ) VALUES ('Sarasola', 41758545, 'ramiro@sarasola.com', '2023-10-10', 'Ramiro', 1)"; SQL statement:
 INSERT INTO DOMICILIOS (CALLE, LOCALIDAD, NUMERO, PROVINCIA) VALUES ('Italia', 'Benavidez', 5043, 'Buenos Aires')
 INSERT INTO PACIENTES (APELLIDO, DNI, EMAIL, FECHA_INGRESO, NOMBRE, ID_DOMICILIO ) VALUES ('Sarasola', 41758545, 'ramiro@sarasola.com', '2023-10-10', 'Ramiro', 1) [42000-214]
+2023-03-25 16:11:23 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * [*]FORM ODONTOLOGOS"; SQL statement:
+SELECT * FORM ODONTOLOGOS [42000-214]
+2023-03-25 16:11:24 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * [*]FORM ODONTOLOGOS"; SQL statement:
+SELECT * FORM ODONTOLOGOS [42000-214]
+2023-03-25 16:11:32 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM PACIENTES\000d\000a\000d\000a[*]SELECT * FORM ODONTOLOGOS"; SQL statement:
+SELECT * FROM PACIENTES
+
+SELECT * FORM ODONTOLOGOS [42000-214]
+2023-03-25 16:11:33 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM PACIENTES\000d\000a\000d\000a[*]SELECT * FORM ODONTOLOGOS"; SQL statement:
+SELECT * FROM PACIENTES
+
+SELECT * FORM ODONTOLOGOS [42000-214]
+2023-03-25 16:11:35 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM PACIENTES\000d\000a\000d\000a[*]SELECT * FORM ODONTOLOGOS"; SQL statement:
+SELECT * FROM PACIENTES
+
+SELECT * FORM ODONTOLOGOS [42000-214]
+2023-03-25 16:11:41 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM PACIENTES\000d\000a\000d\000a[*]SELECT * FROM ODONTOLOGOS"; SQL statement:
+SELECT * FROM PACIENTES
+
+SELECT * FROM ODONTOLOGOS [42000-214]
+2023-03-25 16:27:06 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ODONTOLGOS" not found; SQL statement:
+SELECT * FROM ODONTOLGOS [42102-214]
