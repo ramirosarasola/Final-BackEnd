@@ -49,7 +49,9 @@ public class PacienteService {
         return Optional.of("El paciente ha sido eliminado correctamente");
     }
 
-
+    public Optional<Paciente> buscarPorEmail(String email){
+        return pacienteRespository.findByEmail(email);
+    }
 
 
 

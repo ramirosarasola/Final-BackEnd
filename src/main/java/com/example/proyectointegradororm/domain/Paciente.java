@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -28,7 +29,7 @@ public class Paciente {
 
     @OneToMany(mappedBy = "paciente")
     @JsonIgnore
-    private Set<Turno> turnos;
+    private Set<Turno> turnos = new HashSet<>();
 
     public Long getId() {
         return id;

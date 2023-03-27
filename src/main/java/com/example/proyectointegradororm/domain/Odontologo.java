@@ -3,6 +3,7 @@ package com.example.proyectointegradororm.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,7 @@ public class Odontologo {
     private String matricula;
     @OneToMany(mappedBy = "odontologo")
     @JsonIgnore
-    private Set<Turno> turnos;
+    private Set<Turno> turnos = new HashSet<>();
 
     public Long getId() {
         return id;
