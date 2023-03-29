@@ -1,6 +1,9 @@
 package com.example.proyectointegradororm.service;
 
+import com.example.proyectointegradororm.domain.Odontologo;
+import com.example.proyectointegradororm.domain.Paciente;
 import com.example.proyectointegradororm.domain.Turno;
+import com.example.proyectointegradororm.dto.TurnoDTO;
 import com.example.proyectointegradororm.repository.TurnoRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,20 +18,56 @@ public class TurnoService {
         this.turnoRespository = turnoRespository;
     }
 
-    public Optional<Turno> buscarTurno(Long id){
-        return turnoRespository.findById(id);
+    public Optional<TurnoDTO> buscarTurno(Long id){
+        Optional<Turno> turnoBuscado = turnoRespository.findById(id);
+        if(turnoBuscado.isPresent()){
+            return  Optional.of(TurnoTODTO(turnoBuscado.get()));
+        }else{
+            return Optional.empty();
+        }
     }
-    public Optional<Turno> guardarTurno(Turno turno){
-        return Optional.of(turnoRespository.save(turno));
+
+    public TurnoDTO guardarTurno(TurnoDTO turno){
+        return TurnoTODTO(turnoRespository.save(DTOtoTurno(turno)));
     }
     public Optional<String> eliminarTurno(Long id){
         turnoRespository.deleteById(id);
         return Optional.of("El turno ha sido eliminado");
     }
+    public Optional<TurnoDTO> modificarTurno(TurnoDTO turno){
+        turnoRespository.save(DTOtoTurno(turno));
+        return Optional.ofNullable(turno);
+    }
+    private Turno DTOtoTurno(TurnoDTO turnoDTO){
+        Turno turno = new Turno();
+        Paciente paciente = new Paciente();
+        Odontologo odontologo = new Odontologo();
 
-    public Optional<Turno> modificarTurno(Turno turno){
-        return Optional.of(turnoRespository.save(turno));
+        turno.setId(turnoDTO.getId());
+        turno.setFechaTurno(turnoDTO.getFechaTurno());
+
+        paciente.setId(turnoDTO.getPaciente_id());
+        paciente.setNombre(turnoDTO.getNombre_paciente());
+
+        odontologo.setId(turnoDTO.getOdontologo_id());
+        odontologo.setNombre(turnoDTO.getNombre_odontologo());
+
+        turno.setOdontologo(odontologo);
+        turno.setPaciente(paciente);
+        return turno;
     }
 
+    private TurnoDTO TurnoTODTO(Turno turno){
+        TurnoDTO turnoDTO = new TurnoDTO();
+
+        turnoDTO.setId(turno.getId());
+        turnoDTO.setFechaTurno(turno.getFechaTurno());
+        turnoDTO.setOdontologo_id(turno.getOdontologo().getId());
+        turnoDTO.setPaciente_id(turno.getPaciente().getId());
+        turnoDTO.setNombre_paciente(turno.getPaciente().getNombre());
+        turnoDTO.setNombre_odontologo(turno.getOdontologo().getNombre());
+
+        return turnoDTO;
+    }
 
 }

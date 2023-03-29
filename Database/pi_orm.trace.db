@@ -175,3 +175,18 @@ SELECT * FROM ODONTOLOGOS [42000-214]
 2023-03-25 16:27:06 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ODONTOLGOS" not found; SQL statement:
 SELECT * FROM ODONTOLGOS [42102-214]
+2023-03-29 08:58:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FORM TURNOS WHERE ID=1"; expected "identifier"; SQL statement:
+DELETE * FORM TURNOS WHERE ID=1 [42001-214]
+2023-03-29 08:58:44 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FORM" not found; SQL statement:
+DELETE FORM TURNOS WHERE ID=1 [42102-214]
+2023-03-29 08:58:49 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FORM" not found; SQL statement:
+DELETE FORM TURNOS WHERE ID=1 [42102-214]
+2023-03-29 08:59:05 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FROM TURNOS WHERE ID=1"; expected "identifier"; SQL statement:
+DELETE * FROM TURNOS WHERE ID=1 [42001-214]
+2023-03-29 09:02:31 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]* FROM TURNOS"; expected "identifier"; SQL statement:
+DELETE * FROM TURNOS [42001-214]

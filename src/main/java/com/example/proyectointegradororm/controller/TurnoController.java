@@ -1,39 +1,72 @@
 package com.example.proyectointegradororm.controller;
 
+import com.example.proyectointegradororm.domain.Odontologo;
+import com.example.proyectointegradororm.domain.Paciente;
 import com.example.proyectointegradororm.domain.Turno;
+import com.example.proyectointegradororm.dto.TurnoDTO;
+import com.example.proyectointegradororm.service.OdontologoService;
+import com.example.proyectointegradororm.service.PacienteService;
 import com.example.proyectointegradororm.service.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/turnos")
 public class TurnoController {
     private TurnoService turnoService;
+    private OdontologoService odontologoService;
+    private PacienteService pacienteService;
     @Autowired
-    public TurnoController(TurnoService turnoService) {
+    public TurnoController(TurnoService turnoService, OdontologoService odontologoService, PacienteService pacienteService) {
         this.turnoService = turnoService;
+        this.odontologoService = odontologoService;
+        this.pacienteService = pacienteService;
     }
+
     @PostMapping
-    public ResponseEntity<Turno> guardarTurno(@RequestBody Turno turno){
-        return ResponseEntity.of(turnoService.guardarTurno(turno));
+    public ResponseEntity<TurnoDTO> guardarTurno(@RequestBody TurnoDTO turnoDTO) {
+        ResponseEntity<TurnoDTO> response;
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(turnoDTO.getPaciente_id());
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(turnoDTO.getOdontologo_id());
+
+        if(pacienteBuscado.isPresent() && odontologoBuscado.isPresent()){
+            response = ResponseEntity.ok(turnoService.guardarTurno(turnoDTO));
+        }else{
+            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return response;
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<Turno> buscarTurno(@PathVariable Long id){
-        return ResponseEntity.of(turnoService.buscarTurno(id));
+    public ResponseEntity<TurnoDTO> buscarTurno(@PathVariable Long id){
+        Optional<TurnoDTO> turnoBuscado = turnoService.buscarTurno(id);
+        if(turnoBuscado.isPresent()){
+            return ResponseEntity.ok(turnoBuscado.get());
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @PutMapping
-    public ResponseEntity<Turno> modificarTurno(@RequestBody Turno turno){
-        return ResponseEntity.of(turnoService.modificarTurno(turno));
+    public ResponseEntity<TurnoDTO> modificarTurno(@RequestBody TurnoDTO turnoDTO){
+        Optional<TurnoDTO> turnoBuscado = turnoService.buscarTurno(turnoDTO.getId());
+        if(turnoBuscado.isPresent()){
+            return ResponseEntity.ok(turnoService.modificarTurno(turnoDTO).get());
+        }else{
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @DeleteMapping
     public ResponseEntity<String> eliminarTurno(@PathVariable Long id){
-        if(turnoService.buscarTurno(id) != null){
+        Optional<TurnoDTO> turnoBuscado = turnoService.buscarTurno(id);
+        if(turnoBuscado.isPresent()){
             turnoService.eliminarTurno(id);
-            return eliminarTurno(id);
+            return ResponseEntity.ok("El Turno ha sido cancelado correctamente");
         }else{
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

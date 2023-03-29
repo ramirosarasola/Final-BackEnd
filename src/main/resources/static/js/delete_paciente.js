@@ -14,7 +14,7 @@ function deleteBy(id){
         }
       } else {
         // Eliminación fallida, manejar el error
-        throw new Error(`Error eliminando el odontólogo con ID ${id}: ${response.status} ${response.statusText}`);
+        throw new Error(`Error eliminando el paciente con ID ${id}: ${response.status} ${response.statusText}`);
       }
     })
     .catch(error => console.error(error));
