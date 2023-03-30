@@ -21,7 +21,7 @@ public class PacienteController {
 
     @PostMapping
     public ResponseEntity<Paciente> registrarPaciente(@RequestBody Paciente paciente){
-        return ResponseEntity.of(pacienteService.registrarPaciente(paciente));
+        return ResponseEntity.ok(pacienteService.registrarPaciente(paciente));
     }
     @GetMapping("/{id}")
     public ResponseEntity<Paciente> buscarPaciente(@PathVariable Long id){

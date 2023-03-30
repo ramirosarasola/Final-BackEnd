@@ -24,8 +24,8 @@ public class PacienteService {
         return Optional.of(pacienteRespository.findAll());
     }
 
-    public Optional<Paciente> registrarPaciente(Paciente paciente){
-        return Optional.of(pacienteRespository.save(paciente));
+    public Paciente registrarPaciente(Paciente paciente){
+        return pacienteRespository.save(paciente);
     }
 
     public Optional<Paciente> modificarPaciente(Paciente paciente){

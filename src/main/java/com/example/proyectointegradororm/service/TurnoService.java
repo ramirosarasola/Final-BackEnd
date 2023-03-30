@@ -8,6 +8,8 @@ import com.example.proyectointegradororm.repository.TurnoRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,6 +27,17 @@ public class TurnoService {
         }else{
             return Optional.empty();
         }
+    }
+
+    public Optional<List<TurnoDTO>> listarTurnos(){
+        List<TurnoDTO> turnoListDTO = new ArrayList<>();
+        List<Turno> turnoList = turnoRespository.findAll();
+        if(turnoList.size() > 0){
+            for (Turno turno : turnoList) {
+                turnoListDTO.add(TurnoTODTO(turno));
+            }
+        }
+        return Optional.of(turnoListDTO);
     }
 
     public TurnoDTO guardarTurno(TurnoDTO turno){

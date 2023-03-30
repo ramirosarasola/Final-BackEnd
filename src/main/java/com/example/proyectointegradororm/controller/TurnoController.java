@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -49,6 +50,11 @@ public class TurnoController {
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @GetMapping("/todos")
+    public ResponseEntity<List<TurnoDTO>> listarTurnos(){
+        return ResponseEntity.ok(turnoService.listarTurnos().get());
     }
 
     @PutMapping
