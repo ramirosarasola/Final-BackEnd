@@ -44,9 +44,15 @@ public class TurnoService {
         return TurnoTODTO(turnoRespository.save(DTOtoTurno(turno)));
     }
     public Optional<String> eliminarTurno(Long id){
-        turnoRespository.deleteById(id);
-        return Optional.of("El turno ha sido eliminado");
+        Optional<Turno> turnoBuscado = turnoRespository.findById(id);
+        if(turnoBuscado.isPresent()){
+            turnoRespository.delete(turnoBuscado.get());
+            return Optional.of("El turno ha sido eliminado correctamente");
+        }else{
+            return Optional.empty();
+        }
     }
+
     public Optional<TurnoDTO> modificarTurno(TurnoDTO turno){
         turnoRespository.save(DTOtoTurno(turno));
         return Optional.ofNullable(turno);
