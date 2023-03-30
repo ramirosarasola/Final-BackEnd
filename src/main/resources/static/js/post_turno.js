@@ -4,16 +4,62 @@ window.addEventListener('load', function () {
     //los datos que el usuario cargará el nuevo turno
     const formulario = document.querySelector("#add_new_turno");
 
+    const renderDataOdon = () => {
+        fetch(url='/odontologos/todos')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.length);
+                console.log(data);
+                if(data.length > 0){
+                    data.forEach((item) => {
+
+                        const selectElementOdontologo = document.getElementById("odontologo")
+                        const optionElementOdontologo = document.createElement("option")
+                        optionElementOdontologo.innerHTML = item.nombre;
+                        optionElementOdontologo.setAttribute("tag", item.id)
+                        selectElementOdontologo.appendChild(optionElementOdontologo);
+
+                    })
+                }
+            });
+        }
+
+    const renderDataPac = () => {
+        fetch(url='/pacientes/todos')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.length);
+                console.log(data);
+                if(data.length > 0){
+                    data.forEach((item) => {
+                        const selectElementPaciente = document.getElementById("paciente")
+                        const optionElementPaciente = document.createElement("option")
+                        optionElementPaciente.innerHTML = item.nombre;
+                        optionElementPaciente.setAttribute("tag", item.id);
+                        selectElementPaciente.appendChild(optionElementPaciente);
+
+
+                    })
+                }
+            });
+        }
+
+    renderDataOdon();
+    renderDataPac();
+
     //Ante un submit del formulario se ejecutará la siguiente funcion
     formulario.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-       //creamos un JSON que tendrá los datos de la nueva película
+       //creamos un JSON que tendrá los datos del nuevo turno
         const formData = {
-            paciente_id: document.querySelector('#paciente').value,
-            odontologo_id: document.querySelector('#odontologo').value,
+            paciente_id: document.getElementById("paciente")[document.getElementById("paciente").selectedIndex].getAttribute("tag"),
+            odontologo_id: document.getElementById("odontologo")[document.getElementById("odontologo").selectedIndex].getAttribute("tag"),
             fechaTurno: document.querySelector('#fechaTurno').value,
 
         };
+
+        console.log(formData);
         //invocamos utilizando la función fetch con el método POST que guardará
         //el turno que enviaremos en formato JSON
         const url ='/turnos';

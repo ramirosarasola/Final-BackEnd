@@ -35,6 +35,14 @@ public class TurnoController {
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(turnoDTO.getOdontologo_id());
 
         if(pacienteBuscado.isPresent() && odontologoBuscado.isPresent()){
+
+            if(turnoDTO.getNombre_odontologo() == null){
+                turnoDTO.setNombre_odontologo(odontologoBuscado.get().getNombre());
+            }
+            if(turnoDTO.getNombre_paciente() == null) {
+                turnoDTO.setNombre_paciente(pacienteBuscado.get().getNombre());
+            }
+
             response = ResponseEntity.ok(turnoService.guardarTurno(turnoDTO));
         }else{
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();

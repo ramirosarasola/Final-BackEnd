@@ -54,8 +54,15 @@ public class TurnoService {
     }
 
     public Optional<TurnoDTO> modificarTurno(TurnoDTO turno){
-        turnoRespository.save(DTOtoTurno(turno));
-        return Optional.ofNullable(turno);
+        Optional<Turno> turnoViejoOptional = turnoRespository.findById(turno.getId());
+        if(turnoViejoOptional.isPresent()){
+            Turno turnoViejo = turnoViejoOptional.get();
+            turnoRespository.delete(turnoViejo);
+            Turno turnoActualizado = turnoRespository.save(DTOtoTurno(turno));
+            return Optional.of(TurnoTODTO(turnoActualizado));
+        }else{
+            return Optional.empty();
+        }
     }
     private Turno DTOtoTurno(TurnoDTO turnoDTO){
         Turno turno = new Turno();
