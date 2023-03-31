@@ -1,7 +1,9 @@
 package com.example.proyectointegradororm.service;
 
 import com.example.proyectointegradororm.domain.Paciente;
+import com.example.proyectointegradororm.domain.Turno;
 import com.example.proyectointegradororm.repository.PacienteRespository;
+import com.example.proyectointegradororm.repository.TurnoRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.stereotype.Service;
@@ -12,9 +14,11 @@ import java.util.Optional;
 @Service
 public class PacienteService {
     private PacienteRespository pacienteRespository;
+    private TurnoRespository turnoRespository;
     @Autowired
-    public PacienteService(PacienteRespository pacienteRespository) {
+    public PacienteService(PacienteRespository pacienteRespository, TurnoRespository turnoRespository) {
         this.pacienteRespository = pacienteRespository;
+        this.turnoRespository = turnoRespository;
     }
     public Optional<Paciente> buscarPaciente(Long id){
         return pacienteRespository.findById(id);
@@ -45,7 +49,17 @@ public class PacienteService {
     }
 
     public Optional<String> eliminarPaciente(Long id){
-        pacienteRespository.deleteById(id);
+        Paciente paciente = pacienteRespository.findById(id).get();
+        List<Turno> turnoList = turnoRespository.findAll();
+
+        for(Turno turno : turnoList){
+            if(turno.getPaciente().getId() == paciente.getId()){
+                turnoRespository.delete(turno);
+                pacienteRespository.deleteById(id);
+                return Optional.of("El paciente ha sido eliminado correctamente y el turno ha sido cancelado con exito");
+            }
+        }
+
         return Optional.of("El paciente ha sido eliminado correctamente");
     }
 
