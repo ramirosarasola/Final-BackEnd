@@ -75,16 +75,28 @@ window.addEventListener('load', function () {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                 //Si no hay ningun error se muestra un mensaje diciendo que el turno
-                 //se agrego bien
-                 let successAlert = '<div class="alert alert-success alert-dismissible">' +
-                     '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                     '<strong></strong>Registro Exitoso</div>'
 
-                 document.querySelector('#response').innerHTML = successAlert;
-                 document.querySelector('#response').style.display = "block";
+                if(data.paciente_id != null && data.odontologo_id != null){
+                     //Si no hay ningun error se muestra un mensaje diciendo que el turno
+                     //se agrego bien
+                     let successAlert = '<div class="alert alert-success alert-dismissible">' +
+                         '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                         '<strong></strong>Registro Exitoso</div>'
+
+                     document.querySelector('#response').innerHTML = successAlert;
+                     document.querySelector('#response').style.display = "block";
+                     resetUploadForm();
+                }else{
+                //Si hay algun error se muestra un mensaje diciendo que el odontologo
+                //no se pudo guardar y se intente nuevamente
+                let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
+                                 '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                                 '<strong>Error intente nuevamente</strong> </div>'
+                  document.querySelector('#response').innerHTML = errorAlert;
+                  document.querySelector('#response').style.display = "block";
+                 //se dejan todos los campos vacíos por si se quiere ingresar otra registro
                  resetUploadForm();
-
+                }
             })
             .catch(error => {
                 console.error(error);

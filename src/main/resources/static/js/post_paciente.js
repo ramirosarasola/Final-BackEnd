@@ -19,8 +19,8 @@ window.addEventListener('load', function () {
             dni: document.querySelector('#dni').value,
             fechaIngreso: document.querySelector('#fechaIngreso').value,
             domicilio: {
-               calle: document.querySelector('#calle').value  ,
-               numeroCalle: parseInt(document.querySelector('#numeroCalle').value),
+               calle: document.querySelector('#calle').value,
+               numero: document.querySelector('#numeroCalle').value,
                localidad: document.querySelector('#localidad').value ,
                provincia: document.querySelector('#provincia').value ,
                },
@@ -78,6 +78,10 @@ window.addEventListener('load', function () {
         document.querySelector('#fechaIngreso').value = "";
         document.querySelector('#email').value = "";
 
+        document.querySelector('#calle').value = "";
+        document.querySelector('#numeroCalle').value = "";
+        document.querySelector('#localidad').value = "";
+        document.querySelector('#provincia').value = "";
     }
 
     (function(){

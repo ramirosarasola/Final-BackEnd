@@ -5,6 +5,56 @@ window.addEventListener('load', function () {
     //los datos que el usuario pudo haber modificado de la turno
     const formulario = document.querySelector('#update_turno_form');
 
+    //INICIO DE REFACTORIZACION DEL CODIGO PARA EL UPDATE
+
+        const renderDataOdon = () => {
+            fetch(url='/odontologos/todos')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.length);
+                    console.log(data);
+                    if(data.length > 0){
+                        data.forEach((item) => {
+
+                            const selectElementOdontologo = document.getElementById("odontologo")
+                            const optionElementOdontologo = document.createElement("option")
+                            optionElementOdontologo.innerHTML = item.nombre;
+                            optionElementOdontologo.setAttribute("tag", item.id)
+                            selectElementOdontologo.appendChild(optionElementOdontologo);
+
+                        })
+                    }
+                });
+            }
+
+        const renderDataPac = () => {
+            fetch(url='/pacientes/todos')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.length);
+                    console.log(data);
+                    if(data.length > 0){
+                        data.forEach((item) => {
+                            const selectElementPaciente = document.getElementById("paciente")
+                            const optionElementPaciente = document.createElement("option")
+                            optionElementPaciente.innerHTML = item.nombre;
+                            optionElementPaciente.setAttribute("tag", item.id);
+                            selectElementPaciente.appendChild(optionElementPaciente);
+
+
+                        })
+                    }
+                });
+            }
+
+        renderDataOdon();
+        renderDataPac();
+
+
+
+    //FIN DE REFACTORIZACION DEL CODIGO PARA EL UPDATE
+
+
     formulario.addEventListener('submit', function (event) {
         let turnoId = document.querySelector('#turno_id').value;
         console.log(turnoId)
@@ -14,8 +64,8 @@ window.addEventListener('load', function () {
         //para poder identificarla y modificarla para no cargarlo como nuevo
         const formData = {
             id: document.querySelector('#turno_id').value,
-            paciente: document.querySelector('paciente').value,
-            odontologo: document.querySelector('#odontologo').value,
+            paciente_id: document.getElementById("paciente")[document.getElementById("paciente").selectedIndex].getAttribute("tag"),
+            odontologo_id: document.getElementById("odontologo")[document.getElementById("odontologo").selectedIndex].getAttribute("tag"),
             fechaTurno: document.querySelector('#fechaTurno').value,
 
         };

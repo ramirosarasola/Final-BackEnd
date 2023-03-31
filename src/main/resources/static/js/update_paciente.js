@@ -20,7 +20,7 @@
             fechaIngreso: document.querySelector('#fechaIngreso').value,
             domicilio: {
                calle: document.querySelector('#calle').value  ,
-               numeroCalle: document.querySelector('#numeroCalle').value ,
+               numero: document.querySelector('#numeroCalle').value ,
                localidad: document.querySelector('#localidad').value ,
                provincia: document.querySelector('#provincia').value ,
                },
