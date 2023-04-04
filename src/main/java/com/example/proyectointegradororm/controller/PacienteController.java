@@ -1,7 +1,7 @@
 package com.example.proyectointegradororm.controller;
 
 import com.example.proyectointegradororm.domain.Paciente;
-import com.example.proyectointegradororm.repository.PacienteRespository;
+import com.example.proyectointegradororm.exceptions.ResourceNotFoundException;
 import com.example.proyectointegradororm.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,7 +36,7 @@ public class PacienteController {
         return ResponseEntity.of(pacienteService.modificarPaciente(paciente));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id){
+    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
         if(pacienteService.buscarPaciente(id) != null){
             pacienteService.eliminarPaciente(id);
             return ResponseEntity.ok("El paciente ha sido eliminado correctamente");

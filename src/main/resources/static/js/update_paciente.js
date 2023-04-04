@@ -62,7 +62,12 @@
               document.querySelector('#nombre').value = paciente.nombre;
               document.querySelector('#dni').value = paciente.dni;
               document.querySelector('#fechaIngreso').value = paciente.fechaIngreso;
-              document.querySelector('#domicilio').value = paciente.domicilio;
+
+              document.querySelector('#calle').value = paciente.domicilio.calle
+              document.querySelector('#numeroCalle').value = paciente.domicilio.numero
+              document.querySelector('#provincia').value = paciente.domicilio.provincia
+              document.querySelector('#localidad').value = paciente.domicilio.localidad
+
               document.querySelector('#email').value = paciente.email;
 
               //el formulario por default esta oculto y al editar se habilita

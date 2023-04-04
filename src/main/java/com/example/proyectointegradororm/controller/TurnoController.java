@@ -4,6 +4,8 @@ import com.example.proyectointegradororm.domain.Odontologo;
 import com.example.proyectointegradororm.domain.Paciente;
 import com.example.proyectointegradororm.domain.Turno;
 import com.example.proyectointegradororm.dto.TurnoDTO;
+import com.example.proyectointegradororm.exceptions.ResourceBadRequestException;
+import com.example.proyectointegradororm.exceptions.ResourceNotFoundException;
 import com.example.proyectointegradororm.service.OdontologoService;
 import com.example.proyectointegradororm.service.PacienteService;
 import com.example.proyectointegradororm.service.TurnoService;
@@ -29,25 +31,16 @@ public class TurnoController {
     }
 
     @PostMapping
-    public ResponseEntity<TurnoDTO> guardarTurno(@RequestBody TurnoDTO turnoDTO) {
+    public ResponseEntity<TurnoDTO> guardarTurno(@RequestBody TurnoDTO turnoDTO) throws ResourceBadRequestException {
         ResponseEntity<TurnoDTO> response;
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(turnoDTO.getPaciente_id());
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(turnoDTO.getOdontologo_id());
 
         if(pacienteBuscado.isPresent() && odontologoBuscado.isPresent()){
-
-            if(turnoDTO.getNombre_odontologo() == null){
-                turnoDTO.setNombre_odontologo(odontologoBuscado.get().getNombre());
-            }
-            if(turnoDTO.getNombre_paciente() == null) {
-                turnoDTO.setNombre_paciente(pacienteBuscado.get().getNombre());
-            }
-
-            response = ResponseEntity.ok(turnoService.guardarTurno(turnoDTO));
+            return ResponseEntity.ok(turnoService.guardarTurno(turnoDTO));
         }else{
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        return response;
     }
 
     @GetMapping("/{id}")
@@ -76,7 +69,7 @@ public class TurnoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarTurno(@PathVariable Long id){
+    public ResponseEntity<String> eliminarTurno(@PathVariable Long id) throws ResourceNotFoundException {
         Optional<TurnoDTO> turnoBuscado = turnoService.buscarTurno(id);
         if(turnoBuscado.isPresent()){
             turnoService.eliminarTurno(id);

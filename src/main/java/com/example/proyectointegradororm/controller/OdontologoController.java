@@ -1,6 +1,8 @@
 package com.example.proyectointegradororm.controller;
 
 import com.example.proyectointegradororm.domain.Odontologo;
+import com.example.proyectointegradororm.exceptions.ResourceBadRequestException;
+import com.example.proyectointegradororm.exceptions.ResourceNotFoundException;
 import com.example.proyectointegradororm.service.OdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +23,8 @@ public class OdontologoController {
     }
 
     @PostMapping
-    public ResponseEntity<Odontologo> registrarOdontologo(@RequestBody Odontologo odontologo){
-        return ResponseEntity.of(odontologoService.registrarOdontologo(odontologo));
+    public ResponseEntity<Odontologo> registrarOdontologo(@RequestBody Odontologo odontologo) throws ResourceBadRequestException {
+        return ResponseEntity.ok(odontologoService.registrarOdontologo(odontologo));
     }
     @GetMapping("/{id}")
     public ResponseEntity<Odontologo> buscarOdontologo(@PathVariable Long id){
@@ -39,8 +41,8 @@ public class OdontologoController {
         return ResponseEntity.of(odontologoService.modificarOdontologo(odontologo));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarOdontologo(@PathVariable Long id){
-        if(odontologoService.buscarOdontologo(id) != null){
+    public ResponseEntity<String> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
+        if(odontologoService.buscarOdontologo(id).isPresent()){
             odontologoService.eliminarOdontologo(id);
             return ResponseEntity.ok("El Odontologo ha sido eliminado correctamente");
         }else{

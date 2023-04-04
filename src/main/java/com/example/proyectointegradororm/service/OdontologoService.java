@@ -2,6 +2,8 @@ package com.example.proyectointegradororm.service;
 
 import com.example.proyectointegradororm.domain.Odontologo;
 import com.example.proyectointegradororm.domain.Turno;
+import com.example.proyectointegradororm.exceptions.ResourceBadRequestException;
+import com.example.proyectointegradororm.exceptions.ResourceNotFoundException;
 import com.example.proyectointegradororm.repository.OdontologoRepository;
 import com.example.proyectointegradororm.repository.TurnoRespository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,29 +26,45 @@ public class OdontologoService {
     }
 
     public Optional<Odontologo> buscarOdontologo(Long id){
-        return odontologoRepository.findById(id);
+        Optional<Odontologo> odontologoOptional = odontologoRepository.findById(id);
+        if(odontologoOptional.isPresent()){
+            return odontologoOptional;
+        }else{
+            return Optional.empty();
+        }
     }
 
     public Optional<List<Odontologo>> listarOdontologos(){
         return Optional.of(odontologoRepository.findAll());
     }
 
-    public Optional<String> eliminarOdontologo(Long id){
-        Odontologo odontologo = odontologoRepository.findById(id).get();
-        List<Turno> turnoList =  turnoRespository.findAll();
+    public String eliminarOdontologo(Long id) throws ResourceNotFoundException{
 
-        for (Turno turno : turnoList) {
-            if(turno.getOdontologo().getId() == odontologo.getId()){
-                turnoRespository.delete(turno);
-                odontologoRepository.deleteById(id);
-                return Optional.of("El Odontologo ha sido eliminado correctamente y el turno asignado ha sido cancelado");
+        Optional<Odontologo> odontologoOptional = odontologoRepository.findById(id);
+
+        if(odontologoOptional.isPresent()){
+            Odontologo odontologo = odontologoOptional.get();
+            List<Turno> turnoList =  turnoRespository.findAll();
+
+            for (Turno turno : turnoList) {
+                if(turno.getOdontologo().getId() == odontologo.getId()){
+                    turnoRespository.delete(turno);
+                    odontologoRepository.deleteById(id);
+                    return "El Odontologo ha sido eliminado correctamente y el turno asignado ha sido cancelado";
+                }
             }
+        }else{
+            throw new ResourceNotFoundException("Error. El paciente que desea eliminar no existe");
         }
-        return Optional.of("El Odontologo ha sido eliminado correctamente");
+        odontologoRepository.deleteById(id);
+        return "El Odontologo ha sido eliminado correctamente";
     }
 
-    public Optional<Odontologo> registrarOdontologo(Odontologo odontologo){
-        return Optional.of(odontologoRepository.save(odontologo));
+    public Odontologo registrarOdontologo(Odontologo odontologo) throws ResourceBadRequestException{
+        if(odontologo.getNombre().isEmpty() || odontologo.getApellido().isEmpty() || odontologo.getMatricula().isEmpty()){
+            throw new ResourceBadRequestException("Error. Debe ingresar correctamente los datos.");
+        }
+        return odontologoRepository.save(odontologo);
     }
 
     public Optional<Odontologo> modificarOdontologo(Odontologo odontologo){
