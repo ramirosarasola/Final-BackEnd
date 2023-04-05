@@ -2,7 +2,7 @@
     // Inicia el Loading Page
 
     //Buscamos y obtenemos el formulario donde estan
-    //los datos que el usuario pudo haber modificado de la odontologo
+    //los datos que el usuario pudo haber modificado de la paciente
     const formulario = document.querySelector('#update_paciente_form');
 
     formulario.addEventListener('submit', function (event) {
@@ -10,7 +10,7 @@
         console.log(pacienteId)
 
         //creamos un JSON que tendrá los datos de la película
-        //a diferencia de una odontologo nueva en este caso enviamos el id
+        //a diferencia de una paciente nueva en este caso enviamos el id
         //para poder identificarla y modificarla para no cargarla como nueva
         const formData = {
             id: document.querySelector('#paciente_id').value,
@@ -46,8 +46,8 @@
      })
     // Fin del Loading Page
 
-    //Es la funcion que se invoca cuando se hace click sobre el id de una pelicula del listado
-    //se encarga de llenar el formulario con los datos de la pelicula
+    //Es la funcion que se invoca cuando se hace click sobre el id de una paciente del listado
+    //se encarga de llenar el formulario con los datos de la paciente
     //que se desea modificar
     function findBy(id) {
           const url = '/pacientes'+"/"+id;

@@ -41,7 +41,7 @@ public class PacienteController {
             pacienteService.eliminarPaciente(id);
             return ResponseEntity.ok("El paciente ha sido eliminado correctamente");
         }else{
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 

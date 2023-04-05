@@ -34,14 +34,12 @@ public class PacienteService {
         Optional<Paciente> pacienteOptional = pacienteRespository.findById(id);
 
         if(pacienteOptional.isPresent()){
-            Paciente paciente = pacienteOptional.get();
             List<Turno> turnoList = turnoRespository.findAll();
 
             for(Turno turno : turnoList){
-                if(turno.getPaciente().getId() == paciente.getId()){
+                if(turno.getPaciente().getId() == pacienteOptional.get().getId()){
                     turnoRespository.delete(turno);
                     pacienteRespository.deleteById(id);
-                    return "El paciente ha sido eliminado correctamente y el turno ha sido cancelado con exito";
                 }
             }
 
