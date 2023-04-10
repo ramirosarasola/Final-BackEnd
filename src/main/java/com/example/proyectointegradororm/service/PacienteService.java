@@ -1,5 +1,6 @@
 package com.example.proyectointegradororm.service;
 
+import com.example.proyectointegradororm.domain.Odontologo;
 import com.example.proyectointegradororm.domain.Paciente;
 import com.example.proyectointegradororm.domain.Turno;
 import com.example.proyectointegradororm.exceptions.ResourceNotFoundException;
@@ -27,26 +28,26 @@ public class PacienteService {
     public Optional<List<Paciente>> listarPacientes(){
         return Optional.of(pacienteRespository.findAll());
     }
-
-    public String eliminarPaciente(Long id) throws ResourceNotFoundException {
+    public String eliminarPaciente(Long id) throws ResourceNotFoundException{
 
         Optional<Paciente> pacienteOptional = pacienteRespository.findById(id);
 
         if(pacienteOptional.isPresent()){
-            List<Turno> turnoList = turnoRespository.findAll();
+            Paciente paciente = pacienteOptional.get();
+            List<Turno> turnoList =  turnoRespository.findAll();
 
-            for(Turno turno : turnoList){
-                if(turno.getPaciente().getId() == pacienteOptional.get().getId()){
+            for (Turno turno : turnoList) {
+                if(turno.getOdontologo().getId() == paciente.getId()){
                     turnoRespository.delete(turno);
                     pacienteRespository.deleteById(id);
+                    return "El Paciente ha sido eliminado correctamente y el turno asignado ha sido cancelado";
                 }
             }
-
         }else{
-            throw new ResourceNotFoundException("Error. No existe el paciente que se desea eliminar");
+            throw new ResourceNotFoundException("Error. El paciente que desea eliminar no existe");
         }
         pacienteRespository.deleteById(id);
-        return "El paciente ha sido eliminado correctamente";
+        return "El Paciente ha sido eliminado correctamente";
     }
 
     public Paciente registrarPaciente(Paciente paciente){

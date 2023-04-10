@@ -1,0 +1,44 @@
+[2023-04-10 11:44:20] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 11:45:07] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 11:45:38] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 11:46:08] [ INFO ] [OdontologoService:41] Se listan todos los odontologos disponibles.
+[2023-04-10 11:49:17] [ ERROR] [OdontologoService:36] Error. El odontologo solicitado no existe.
+[2023-04-10 11:52:44] [ INFO ] [OdontologoService:42] Se listan todos los odontologos disponibles.
+[2023-04-10 11:52:49] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 11:52:50] [ INFO ] [OdontologoService:42] Se listan todos los odontologos disponibles.
+[2023-04-10 11:53:11] [ ERROR] [GlobalExcepetion:16] Error. No se ha encontrado el recurso solicitado.
+[2023-04-10 11:53:12] [ ERROR] [GlobalExcepetion:16] Error. No se ha encontrado el recurso solicitado.
+[2023-04-10 11:55:28] [ ERROR] [OdontologoService:36] Error. El odontologo solicitado no existe.
+[2023-04-10 11:55:34] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 11:55:45] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 11:56:01] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 11:56:09] [ ERROR] [GlobalExcepetion:16] Error. No se ha encontrado el recurso solicitado.
+[2023-04-10 11:59:34] [ ERROR] [OdontologoService:36] Error. El odontologo solicitado no existe.
+[2023-04-10 11:59:42] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:01:27] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:01:52] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:02:08] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:02:29] [ INFO ] [OdontologoService:42] Se listan todos los odontologos disponibles.
+[2023-04-10 12:02:35] [ INFO ] [OdontologoService:42] Se listan todos los odontologos disponibles.
+[2023-04-10 12:08:26] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:19:31] [ WARN ] [OdontologoService:78] Se ha modificado el odontologo con id: 1
+[2023-04-10 12:19:51] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:19:51] [ WARN ] [OdontologoService:78] Se ha modificado el odontologo con id: 2
+[2023-04-10 12:20:14] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:20:14] [ WARN ] [OdontologoService:78] Se ha modificado el odontologo con id: 2
+[2023-04-10 12:22:23] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:22:23] [ WARN ] [OdontologoService:78] Se ha modificado el odontologo con id: 2
+[2023-04-10 12:25:12] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:25:12] [ WARN ] [OdontologoService:78] Se ha modificado el odontologo con id: 2
+[2023-04-10 12:25:12] [ INFO ] [OdontologoService:42] Se listan todos los odontologos disponibles.
+[2023-04-10 12:26:30] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:26:30] [ WARN ] [OdontologoService:78] Se ha modificado el odontologo con id: 2
+[2023-04-10 12:26:31] [ INFO ] [OdontologoService:42] Se listan todos los odontologos disponibles.
+[2023-04-10 12:28:22] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:28:22] [ WARN ] [OdontologoService:78] Se ha modificado el odontologo con id: 2
+[2023-04-10 12:29:45] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:29:45] [ WARN ] [OdontologoService:78] Se ha modificado el odontologo con id: 2
+[2023-04-10 12:29:46] [ INFO ] [OdontologoService:42] Se listan todos los odontologos disponibles.
+[2023-04-10 12:30:37] [ INFO ] [OdontologoService:33] El odontologo ha sido encontrado exitosamente.
+[2023-04-10 12:30:37] [ WARN ] [OdontologoService:78] Se ha modificado el odontologo con id: 2
+[2023-04-10 12:30:37] [ INFO ] [OdontologoService:42] Se listan todos los odontologos disponibles.
