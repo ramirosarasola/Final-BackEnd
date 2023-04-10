@@ -6,7 +6,6 @@ import com.example.proyectointegradororm.exceptions.ResourceNotFoundException;
 import com.example.proyectointegradororm.repository.PacienteRespository;
 import com.example.proyectointegradororm.repository.TurnoRespository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

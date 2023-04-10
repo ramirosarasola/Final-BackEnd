@@ -5,8 +5,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "usuarios")
@@ -23,23 +25,29 @@ public class Usuario implements UserDetails {
     @Column
     private String password;
     @Enumerated(EnumType.STRING)
-    private UsuarioRol rol;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<UsuarioRol> setUserRol = new HashSet<>();
 
-    public Usuario() {
-    }
-
-    public Usuario(String nombre, String apellido, String email, String password, UsuarioRol rol) {
+    public Usuario(String nombre, String apellido, String email, String password,UsuarioRol... userRols) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.password = password;
-        this.rol = rol;
+        if (setUserRol!=null){
+            setUserRol.addAll(Arrays.asList(userRols));
+        }
+    }
+
+    public Usuario() {
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(rol.name());
-        return Collections.singletonList(grantedAuthority);
+        Set<SimpleGrantedAuthority> grantedAuthority = new HashSet<>();
+        for (UsuarioRol rol : setUserRol) {
+            grantedAuthority.add(new SimpleGrantedAuthority(rol.name()));
+        }
+        return grantedAuthority;
     }
 
     @Override

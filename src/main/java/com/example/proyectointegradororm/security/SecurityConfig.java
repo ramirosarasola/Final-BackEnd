@@ -13,11 +13,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private UsuarioService usuarioService;
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder BCencoder;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -29,26 +29,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/altaTurno.html").hasRole("USER")
+                .antMatchers("/index.html").hasRole("USER")
+                .antMatchers("/index.html").hasRole("ADMIN")
                 .antMatchers("/buscarTurno.html").hasRole("USER")
-                .antMatchers("/altaPaciente.html").hasRole("ADMIN")
-                .antMatchers("/listarPaciente.html").hasRole("ADMIN")
+                .antMatchers("/altaTurno.html").hasRole("USER")
                 .antMatchers("/altaOdontologo.html").hasRole("ADMIN")
                 .antMatchers("/listarOdontologo.html").hasRole("ADMIN")
+                .antMatchers("/altaPaciente.html").hasRole("ADMIN")
+                .antMatchers("/listarPaciente.html").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .and()
                 .logout();
-//                .antMatchers("/*").hasRole("USER")
     }
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider(){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(usuarioService);
-        provider.setPasswordEncoder(bCryptPasswordEncoder);
+        provider.setPasswordEncoder(BCencoder);
         return provider;
-
     }
-
 }

@@ -71,7 +71,7 @@ public class TurnoService {
             return Optional.empty();
         }
     }
-    private Turno DTOtoTurno(TurnoDTO turnoDTO){
+    public Turno DTOtoTurno(TurnoDTO turnoDTO){
         Turno turno = new Turno();
         Paciente paciente = new Paciente();
         Odontologo odontologo = new Odontologo();
@@ -90,7 +90,7 @@ public class TurnoService {
         return turno;
     }
 
-    private TurnoDTO TurnoTODTO(Turno turno){
+    public TurnoDTO TurnoTODTO(Turno turno){
         TurnoDTO turnoDTO = new TurnoDTO();
 
         turnoDTO.setId(turno.getId());

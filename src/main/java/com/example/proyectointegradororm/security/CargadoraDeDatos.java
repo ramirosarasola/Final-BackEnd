@@ -19,9 +19,13 @@ public class CargadoraDeDatos implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String passACifrar = "a1s2d3asd";
-        String passCifrada = encoder.encode(passACifrar);
-        Usuario usuarioAInsertar = new Usuario("Ramiro", "Sarasola", "ramiro.sarasola@gmail.com", passCifrada, UsuarioRol.ROLE_USER);
-        usuarioRepository.save(usuarioAInsertar);
+        String passACifrar1 = "a1s2d3asd";
+        String passACifrar2 = "123asd";
+        String passCifrada1 = encoder.encode(passACifrar1);
+        String passCifrada2 = encoder.encode(passACifrar2);
+        Usuario user1 = new Usuario("Ramiro", "Sarasola", "ramiro@gmail.com", passCifrada1, UsuarioRol.ROLE_USER);
+        Usuario user2 = new Usuario("Jorge", "Sarasola", "jorge@gmail.com", passCifrada2, UsuarioRol.ROLE_ADMIN);
+        usuarioRepository.save(user1);
+        usuarioRepository.save(user2);
     }
 }
